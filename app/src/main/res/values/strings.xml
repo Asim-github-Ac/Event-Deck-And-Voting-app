@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Events Deck</string>
+    <string-array name="categories">
+        <item>Business</item>
+        <item>Tech</item>
+        <item>Outsider</item>
+        <item>Recreational</item>
+    </string-array>
+
+    <string-array name="time">
+        <item>University Hours</item>
+        <item>After University</item>
+    </string-array>
+</resources>
