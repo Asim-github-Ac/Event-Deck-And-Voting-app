@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OnlineAuctionApp">
         <activity
+            android:name=".Student_Approve"
+            android:exported="false" />
+        <activity
             android:name=".AdminUsage.AdminRegister"
             android:exported="false" />
         <activity

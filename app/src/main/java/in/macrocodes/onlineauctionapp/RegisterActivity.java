@@ -123,7 +123,8 @@ public class RegisterActivity extends AppCompatActivity {
                                        public void onSuccess(DocumentReference documentReference) {
                                            PrefManager prefManager=new PrefManager(getApplicationContext());
                                            prefManager.setToken_Email("Student");
-                                           Intent mainIntent = new Intent(RegisterActivity.this, HomeActivity.class);
+                                           Intent mainIntent = new Intent(RegisterActivity.this, Student_Approve.class);
+                                           mainIntent.putExtra("approve",addrollno.getText().toString());
                                            mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                            startActivity(mainIntent);
                                            finish();
@@ -132,6 +133,7 @@ public class RegisterActivity extends AppCompatActivity {
                                        @Override
                                        public void onFailure(@NonNull Exception e) {
 
+                                           Toast.makeText(RegisterActivity.this, "error"+e.getMessage(), Toast.LENGTH_SHORT).show();
                                        }
                                    });
                                 }else if(usertype.equals("Admin")){
