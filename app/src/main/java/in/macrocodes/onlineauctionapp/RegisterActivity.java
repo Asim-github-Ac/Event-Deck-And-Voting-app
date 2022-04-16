@@ -26,6 +26,7 @@ import java.util.Map;
 
 import in.macrocodes.onlineauctionapp.AdminUsage.Admin_Panel;
 import in.macrocodes.onlineauctionapp.Models.UserData;
+import in.macrocodes.onlineauctionapp.SharedPrefrence.PrefManager;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -103,6 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     UserData userData = new UserData(display_name,email,city,"default",uid,addrollno.getText().toString());
 
+
                     mDatabase.child(uid).setValue(userData).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -110,15 +112,14 @@ public class RegisterActivity extends AppCompatActivity {
                             if(task.isSuccessful()){
 
                                 if (usertype.equals("Student")) {
+                                    PrefManager prefManager=new PrefManager(getApplicationContext());
+                                    prefManager.setToken_Email("Student");
                                     Intent mainIntent = new Intent(RegisterActivity.this, HomeActivity.class);
                                     mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     startActivity(mainIntent);
                                     finish();
                                 }else if(usertype.equals("Admin")){
-                                    Intent mainIntent = new Intent(RegisterActivity.this, Admin_Panel.class);
-                                    mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                    startActivity(mainIntent);
-                                    finish();
+
                                 }
 
                             }

@@ -6,16 +6,23 @@
         <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/drawable-v24/ic_menu_send.xml" value="0.1675" />
         <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/drawable-v24/transparent_bg_bordered.xml" value="0.1675" />
         <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/drawable-v24/transparent_bg_bordered_button.xml" value="0.1675" />
+        <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/drawable/createnew.xml" value="0.17" />
         <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/drawable/ic_baseline_library_books_24.xml" value="0.1675" />
+        <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/drawable/ic_chevron_right_black_24dp.xml" value="0.17" />
         <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/drawable/rect_btn.xml" value="0.1675" />
         <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/layout/activity_add_events.xml" value="0.2682291666666667" />
         <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/layout/activity_add_productfor_bid.xml" value="0.21" />
+        <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/layout/activity_admin_panel.xml" value="0.12604166666666666" />
+        <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/layout/activity_admin_register.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/layout/activity_home.xml" value="0.13958333333333334" />
         <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/layout/activity_main.xml" value="0.2682291666666667" />
         <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/layout/activity_my_campaigns.xml" value="0.2682291666666667" />
         <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/layout/activity_product_info.xml" value="0.2682291666666667" />
         <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/layout/activity_settings.xml" value="0.2682291666666667" />
         <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/layout/activity_signup.xml" value="0.25" />
+        <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/layout/activity_student_list.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/layout/approve_item.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/layout/createnew.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/layout/event_panel_layout.xml" value="0.2682291666666667" />
         <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/layout/live_bid.xml" value="0.13958333333333334" />
         <entry key="..\:/Users/Asim Mehar/Downloads/OnlineAuctionApp-master/app/src/main/res/layout/my_camp_layout.xml" value="0.21" />

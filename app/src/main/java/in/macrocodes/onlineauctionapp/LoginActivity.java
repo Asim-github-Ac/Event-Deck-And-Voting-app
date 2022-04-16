@@ -139,6 +139,8 @@ public class LoginActivity extends AppCompatActivity {
                                         //dialog_verifying = null;
                                         mRegProgress.dismiss();
                                         if (usertype.equals("Student")) {
+                                            PrefManager prefManager=new PrefManager(getApplicationContext());
+                                            prefManager.setToken_Email("Student");
                                             Intent mainIntent = new Intent(LoginActivity.this, HomeActivity.class);
                                             mainIntent.putExtra("id", current_user_id);
                                             startActivity(mainIntent);

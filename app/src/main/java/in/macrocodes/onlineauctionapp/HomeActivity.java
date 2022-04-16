@@ -302,6 +302,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+        System.out.println("user type is +++++++"+prefManager.getToken_Email());
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseDatabase.getInstance().goOnline();
@@ -314,7 +315,7 @@ public class HomeActivity extends AppCompatActivity {
             Intent intent=new Intent(getApplicationContext(), Admin_Panel.class);
             startActivity(intent);
         }
-        else {
+        else if (prefManager.getToken_Email().equals("Student")){
 
             final DatabaseReference mUserDatabase = FirebaseDatabase.getInstance()
                     .getReference().child("Users").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());

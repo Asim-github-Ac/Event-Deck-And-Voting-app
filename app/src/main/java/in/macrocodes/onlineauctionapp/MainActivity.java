@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import in.macrocodes.onlineauctionapp.AdminUsage.AdminRegister;
+
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private Button mRegBtn;
@@ -36,10 +38,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mRegBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent reg_intent = new Intent(MainActivity.this, RegisterActivity.class);
-                reg_intent.putExtra("user",usertype);
-                startActivity(reg_intent);
+                if (usertype.equals("Student")){
+                    Intent reg_intent = new Intent(MainActivity.this, RegisterActivity.class);
+                    reg_intent.putExtra("user",usertype);
+                    startActivity(reg_intent);
+                }else if (usertype.equals("Admin")){
+                    Intent reg_intent = new Intent(MainActivity.this, AdminRegister.class);
+                    reg_intent.putExtra("user",usertype);
+                    startActivity(reg_intent);
+                }
 
             }
         });
@@ -47,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent login_intent = new Intent(MainActivity.this, LoginActivity.class);
                 login_intent.putExtra("user",usertype);
                 startActivity(login_intent);

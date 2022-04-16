@@ -1,9 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".AdminUsage.Admin_Panel">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Admin DashBoard"
+        />
+    <Button
+        android:id="@+id/stdapprove"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_margin="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/createnew"
+        android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+        android:gravity="start|center_vertical"
+        android:paddingStart="15dp"
+        android:stateListAnimator="@null"
+        android:text="Approvel"
+        android:textAlignment="gravity"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        tools:ignore="HardcodedText,RtlSymmetry,SpUsage,UnusedAttribute" />
+</LinearLayout>
