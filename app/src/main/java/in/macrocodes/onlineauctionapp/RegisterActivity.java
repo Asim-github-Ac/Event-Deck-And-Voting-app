@@ -14,12 +14,16 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -104,6 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     UserData userData = new UserData(display_name,email,city,"default",uid,addrollno.getText().toString());
 
+                    FirebaseFirestore firebaseFirestore=FirebaseFirestore.getInstance();
 
                     mDatabase.child(uid).setValue(userData).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -111,13 +116,24 @@ public class RegisterActivity extends AppCompatActivity {
 
                             if(task.isSuccessful()){
 
+
                                 if (usertype.equals("Student")) {
-                                    PrefManager prefManager=new PrefManager(getApplicationContext());
-                                    prefManager.setToken_Email("Student");
-                                    Intent mainIntent = new Intent(RegisterActivity.this, HomeActivity.class);
-                                    mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                    startActivity(mainIntent);
-                                    finish();
+                                   firebaseFirestore.collection("Users").add(userData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                       @Override
+                                       public void onSuccess(DocumentReference documentReference) {
+                                           PrefManager prefManager=new PrefManager(getApplicationContext());
+                                           prefManager.setToken_Email("Student");
+                                           Intent mainIntent = new Intent(RegisterActivity.this, HomeActivity.class);
+                                           mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                           startActivity(mainIntent);
+                                           finish();
+                                       }
+                                   }).addOnFailureListener(new OnFailureListener() {
+                                       @Override
+                                       public void onFailure(@NonNull Exception e) {
+
+                                       }
+                                   });
                                 }else if(usertype.equals("Admin")){
 
                                 }

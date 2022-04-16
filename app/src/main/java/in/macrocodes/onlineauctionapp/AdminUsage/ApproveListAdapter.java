@@ -43,7 +43,7 @@ public class ApproveListAdapter extends RecyclerView.Adapter<ApproveListAdapter.
         holder.name.setText(userData.getName());
         holder.email.setText(userData.getEmail());
         holder.city.setText(userData.getCity());
-        holder.rollnumber.setText(userData.getRollnomber());
+//        holder.rollnumber.setText(userData.getRollnomber());
       //  Picasso.get().load(userData.getImage()).into(holder.imageView);
     }
 

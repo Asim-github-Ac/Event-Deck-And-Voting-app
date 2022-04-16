@@ -7,6 +7,10 @@
     android:orientation="vertical"
     tools:context=".AdminUsage.StudentList">
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Student List"/>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

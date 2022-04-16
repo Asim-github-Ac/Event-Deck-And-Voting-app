@@ -8,12 +8,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.auth.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,19 +41,24 @@ public class StudentList extends AppCompatActivity {
 
     }
     public void GetData(){
+        FirebaseFirestore firebaseFirestore=FirebaseFirestore.getInstance();
+        firebaseFirestore.collection("Users").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                if (queryDocumentSnapshots.isEmpty()){
+                    Toast.makeText(StudentList.this, "Record No Found", Toast.LENGTH_SHORT).show();
+                }else {
+                    List<UserData> userData=queryDocumentSnapshots.toObjects(UserData.class);
+                    userDataList.addAll(userData);
+                    approveListAdapter=new ApproveListAdapter(getApplicationContext(),userDataList);
+                    recyclerView.setAdapter(approveListAdapter);
 
-        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("Users");
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                UserData userData= snapshot.getValue(UserData.class);
-                userDataList.add(userData);
-                approveListAdapter=new ApproveListAdapter(getApplicationContext(),userDataList);
-                recyclerView.setAdapter(approveListAdapter);
+                }
             }
+        }).addOnFailureListener(new OnFailureListener() {
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(StudentList.this, "student list "+ error.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(StudentList.this, "error"+e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
