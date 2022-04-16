@@ -44,13 +44,16 @@ import java.util.List;
 import java.util.Objects;
 
 import in.macrocodes.onlineauctionapp.Adapter.AdapterClass;
+import in.macrocodes.onlineauctionapp.AdminUsage.Admin_Panel;
 import in.macrocodes.onlineauctionapp.Models.BiddingModal;
 import in.macrocodes.onlineauctionapp.Models.Products;
+import in.macrocodes.onlineauctionapp.SharedPrefrence.PrefManager;
 
 public class HomeActivity extends AppCompatActivity {
     int max = -1;
     String maxUserId = null;
     FloatingActionButton addProduct;
+    PrefManager prefManager;
     RecyclerView mRecyclerView;
     AdapterClass mAdapter;
     BottomAppBar bottomAppBar;
@@ -66,6 +69,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        prefManager=new PrefManager(this);
         addProduct = (FloatingActionButton) findViewById(R.id.addProduct);
         mRecyclerView = (RecyclerView) findViewById(R.id.productList);
 
@@ -306,7 +310,11 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(startIntent);
             finish();
 
-        } else {
+        }else if (prefManager.getToken_Email().equals("Admin")){
+            Intent intent=new Intent(getApplicationContext(), Admin_Panel.class);
+            startActivity(intent);
+        }
+        else {
 
             final DatabaseReference mUserDatabase = FirebaseDatabase.getInstance()
                     .getReference().child("Users").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());

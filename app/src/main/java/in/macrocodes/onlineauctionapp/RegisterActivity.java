@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
+import in.macrocodes.onlineauctionapp.AdminUsage.Admin_Panel;
 import in.macrocodes.onlineauctionapp.Models.UserData;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -33,6 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button mCreateBtn;
     private DatabaseReference mDatabase;
     private final int i = 0;
+    String usertype;
     //ProgressDialog
     private ProgressDialog mRegProgress;
     //Firebase Auth
@@ -41,7 +43,8 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
+        Intent intent=getIntent();
+        usertype=intent.getStringExtra("user");
         mRegProgress = new ProgressDialog(this);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
@@ -106,10 +109,17 @@ public class RegisterActivity extends AppCompatActivity {
 
                             if(task.isSuccessful()){
 
-                                Intent mainIntent = new Intent(RegisterActivity.this, HomeActivity.class);
-                                mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(mainIntent);
-                                finish();
+                                if (usertype.equals("Student")) {
+                                    Intent mainIntent = new Intent(RegisterActivity.this, HomeActivity.class);
+                                    mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(mainIntent);
+                                    finish();
+                                }else if(usertype.equals("Admin")){
+                                    Intent mainIntent = new Intent(RegisterActivity.this, Admin_Panel.class);
+                                    mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(mainIntent);
+                                    finish();
+                                }
 
                             }
 

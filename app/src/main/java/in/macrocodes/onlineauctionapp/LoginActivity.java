@@ -28,6 +28,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
+import in.macrocodes.onlineauctionapp.AdminUsage.Admin_Panel;
+import in.macrocodes.onlineauctionapp.SharedPrefrence.PrefManager;
+
 public class LoginActivity extends AppCompatActivity {
     private Toolbar mToolbar;
 
@@ -36,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private Button mLogin_btn,mSign_up;
     private Context mContext;
-
+    String usertype;
     private ProgressDialog mLoginProgress;
 
     private FirebaseAuth mAuth;
@@ -47,7 +50,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        Intent intent=getIntent();
+        usertype=intent.getStringExtra("user");
         mAuth = FirebaseAuth.getInstance();
 
         mLogin_btn=(Button)findViewById(R.id.lg_login);
@@ -134,10 +138,19 @@ public class LoginActivity extends AppCompatActivity {
                                         // dialog_verifying.cancel();
                                         //dialog_verifying = null;
                                         mRegProgress.dismiss();
-                                        Intent mainIntent = new Intent(LoginActivity.this, HomeActivity.class);
-                                        mainIntent.putExtra("id", current_user_id);
-                                        startActivity(mainIntent);
-                                        finish();
+                                        if (usertype.equals("Student")) {
+                                            Intent mainIntent = new Intent(LoginActivity.this, HomeActivity.class);
+                                            mainIntent.putExtra("id", current_user_id);
+                                            startActivity(mainIntent);
+                                            finish();
+                                        }else if (usertype.equals("Admin")){
+                                            PrefManager prefManager=new PrefManager(getApplicationContext());
+                                            prefManager.setToken_Email("Admin");
+                                            Intent mainIntent = new Intent(LoginActivity.this, Admin_Panel.class);
+                                            mainIntent.putExtra("id", current_user_id);
+                                            startActivity(mainIntent);
+                                            finish();
+                                        }
 
                                     }
                                 });
