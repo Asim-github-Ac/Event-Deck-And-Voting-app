@@ -37,7 +37,12 @@ public class Student_Approve extends AppCompatActivity {
                 }else {
                     List<Status> list=queryDocumentSnapshots.toObjects(Status.class);
                     statusList.addAll(list);
-                    
+                    if(statusList.get(0).getName().equals("1")){
+                        Intent mainIntent = new Intent(Student_Approve.this, HomeActivity.class);
+                        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(mainIntent);
+                        finish();
+                    }
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
