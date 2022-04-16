@@ -40,9 +40,9 @@ public class ApproveListAdapter extends RecyclerView.Adapter<ApproveListAdapter.
     public void onBindViewHolder(@NonNull ApproveListAdapter.myHolder holder, int position) {
 
         UserData userData=userDataList.get(position);
-        holder.name.setText(userData.getName());
-        holder.email.setText(userData.getEmail());
-        holder.city.setText(userData.getCity());
+        holder.name.setText("Name : "+userData.getName());
+        holder.email.setText("Email : "+userData.getEmail());
+        holder.city.setText("City : "+userData.getCity());
 //        holder.rollnumber.setText(userData.getRollnomber());
       //  Picasso.get().load(userData.getImage()).into(holder.imageView);
     }
@@ -63,6 +63,9 @@ public class ApproveListAdapter extends RecyclerView.Adapter<ApproveListAdapter.
             city=itemView.findViewById(R.id.cityis);
             imageView=itemView.findViewById(R.id.stdimg);
         }
+
+    }
+    public void ApproveOrder(String status,String name){
 
     }
 }

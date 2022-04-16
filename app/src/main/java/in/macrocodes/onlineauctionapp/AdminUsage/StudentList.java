@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -30,11 +31,17 @@ public class StudentList extends AppCompatActivity {
     List<UserData> userDataList=new ArrayList<>();
     ApproveListAdapter approveListAdapter;
     RecyclerView recyclerView;
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_list);
         recyclerView=findViewById(R.id.stdrecyc);
+        progressDialog=new ProgressDialog(this);
+        progressDialog.setTitle("Progress");
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Loading....");
+        progressDialog.show();
         recyclerView.setLayoutManager(new GridLayoutManager(this,1));
         GetData();
 
@@ -47,11 +54,13 @@ public class StudentList extends AppCompatActivity {
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 if (queryDocumentSnapshots.isEmpty()){
                     Toast.makeText(StudentList.this, "Record No Found", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
                 }else {
                     List<UserData> userData=queryDocumentSnapshots.toObjects(UserData.class);
                     userDataList.addAll(userData);
                     approveListAdapter=new ApproveListAdapter(getApplicationContext(),userDataList);
                     recyclerView.setAdapter(approveListAdapter);
+                    progressDialog.dismiss();
 
                 }
             }
@@ -59,6 +68,7 @@ public class StudentList extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(StudentList.this, "error"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
             }
         });
     }

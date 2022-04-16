@@ -61,12 +61,10 @@
         android:layout_height="wrap_content">
         <Spinner
             android:id="@+id/simpleSpinner"
-            android:layout_width="260dp"
+            android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="10dp"
-            android:padding="30dp"
-
-            android:layout_marginTop="100dp" />
+            />
         <Button
             android:id="@+id/login"
             android:layout_width="260dp"
