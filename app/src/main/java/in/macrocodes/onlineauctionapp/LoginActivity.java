@@ -93,9 +93,6 @@ public class LoginActivity extends AppCompatActivity {
                     mRegProgress.show();
                     loginUser(email,password);
                 }
-
-
-
             }
         });
 
