@@ -152,27 +152,16 @@ public class addProductforBid extends AppCompatActivity {
         mStorageRef = FirebaseStorage.getInstance().getReference("Candidate");
        // mDatabaseRef = FirebaseDatabase.getInstance().getReference("Products");
         if (mImageUri != null) {
-
-            // Code for showing progressDialog while uploading
             final ProgressDialog progressDialog
                     = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
-
-            // Defining the child of storageReference
             final StorageReference ref =
                     mStorageRef.child("Products" + System.currentTimeMillis() + "." + getFileExtension(mImageUri));
-
-
-            // adding listeners on upload
-            // or failure of image
             ref.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    // Image uploaded successfully
-                    // Dismiss dialog
                     progressDialog.dismiss();
-
                     ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
@@ -187,7 +176,6 @@ public class addProductforBid extends AppCompatActivity {
                     });
                 }
             })
-
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
