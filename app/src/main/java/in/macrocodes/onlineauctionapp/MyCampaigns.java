@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -33,9 +34,9 @@ import in.macrocodes.onlineauctionapp.Models.AddEventModel;
 import in.macrocodes.onlineauctionapp.Models.Products;
 
 public class MyCampaigns extends AppCompatActivity implements View.OnClickListener {
-    MyCampaignAdapter mAdapter;
     private RecyclerView mRecyclerView;
     ImageView imageView;
+    ProgressDialog progressDialog;
     ArrayList<AddEventModel> addEventModelslist = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,11 @@ public class MyCampaigns extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.activity_my_campaigns);
         mRecyclerView = (RecyclerView) findViewById(R.id.myCamp);
         imageView=findViewById(R.id.addevent);
-        GridLayoutManager linearLayoutManager = new GridLayoutManager(this,2);
+        progressDialog=new ProgressDialog(this);
+        progressDialog.setTitle("Loading Events");
+        progressDialog.setMessage("Loadings......");
+        progressDialog.show();
+        GridLayoutManager linearLayoutManager = new GridLayoutManager(this,1);
         mRecyclerView.setLayoutManager(linearLayoutManager);
 //        mAdapter = new MyCampaignAdapter(MyCampaigns.this,myProducts);
 //        mRecyclerView.setAdapter(mAdapter);
@@ -65,10 +70,12 @@ public class MyCampaigns extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 if (queryDocumentSnapshots.isEmpty()){
+                    progressDialog.dismiss();
                     Toast.makeText(MyCampaigns.this, "No Event Were Found", Toast.LENGTH_SHORT).show();
                 }else{
                     List<AddEventModel> addEventModels=queryDocumentSnapshots.toObjects(AddEventModel.class);
                     addEventModelslist.addAll(addEventModels);
+                    progressDialog.dismiss();
                     AndroidDataAdapter mAdapter = new AndroidDataAdapter(getApplicationContext(), addEventModelslist);
                     mRecyclerView.setAdapter(mAdapter);
                 }
@@ -77,6 +84,7 @@ public class MyCampaigns extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onFailure(@NonNull Exception e) {
 
+                progressDialog.dismiss();
             }
         });
 

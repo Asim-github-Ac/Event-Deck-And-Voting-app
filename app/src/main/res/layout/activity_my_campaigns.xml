@@ -25,7 +25,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:overScrollMode="never"
-        android:elevation="10dp"
         android:layout_below="@+id/toolbar"
         android:id="@+id/myCamp"/>
 

@@ -40,7 +40,7 @@ public class MyCampaignAdapter extends RecyclerView.Adapter<MyCampaignAdapter.Vi
     @NonNull
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_camp_layout,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.total_events,parent,false);
         return new Viewholder(view);
     }
 
@@ -69,7 +69,6 @@ public class MyCampaignAdapter extends RecyclerView.Adapter<MyCampaignAdapter.Vi
                                 String email = Objects.requireNonNull(snapshot.child("email").getValue()).toString();
                                 String name = Objects.requireNonNull(snapshot.child("name").getValue()).toString();
 
-                                holder.bidstatus.setText("Product sold to "+name+" at Rs "+ammount+"\nContact them at - "+email);
 
                             }
 
@@ -81,7 +80,7 @@ public class MyCampaignAdapter extends RecyclerView.Adapter<MyCampaignAdapter.Vi
 
 
                     }else{
-                        holder.bidstatus.setText("Bidding is over.\nNo one bidded for your product");
+
                     }
                 }
 
@@ -92,7 +91,7 @@ public class MyCampaignAdapter extends RecyclerView.Adapter<MyCampaignAdapter.Vi
             });
 
         }else{
-            holder.bidstatus.setText("Campaign is currently running");
+
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -163,14 +162,13 @@ public class MyCampaignAdapter extends RecyclerView.Adapter<MyCampaignAdapter.Vi
     public static class Viewholder extends RecyclerView.ViewHolder{
 
         private ImageView pImage,delete;
-        private TextView pName,pdesc,bidstatus;
+        private TextView pName,pdesc;
         public Viewholder(@NonNull View itemView) {
             super(itemView);
-            pName = (TextView) itemView.findViewById(R.id.pname);
-            pdesc = (TextView) itemView.findViewById(R.id.pdesc);
-            pImage = (ImageView) itemView.findViewById(R.id.pimage);
+            pName = (TextView) itemView.findViewById(R.id.eventname);
+            pdesc = (TextView) itemView.findViewById(R.id.eventdescription);
+            pImage = (ImageView) itemView.findViewById(R.id.eventpic);
             delete = (ImageView) itemView.findViewById(R.id.delete);
-            bidstatus = (TextView) itemView.findViewById(R.id.bidStatus);
         }
     }
 }

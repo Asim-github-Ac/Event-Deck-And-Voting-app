@@ -66,7 +66,10 @@ public class AndroidDataAdapter extends RecyclerView.Adapter<AndroidDataAdapter.
         });
 
         Picasso.get().load(arrayList.get(i).image).into(holder.imageView);
+        holder.eventText.setText(arrayList.get(i).name);
+        holder.timeText.setText("Starts: "+arrayList.get(i).getStartTime());
 
+        holder.userText.setText(arrayList.get(i).getDescription());
 //        if(currentuser.bookmarklist.contains(arrayList.get(i))){
 //            holder.bookmark.setImageResource(R.drawable.starmarked);
 //            holder.bookmark.setTag(R.drawable.starmarked);
@@ -83,28 +86,28 @@ public class AndroidDataAdapter extends RecyclerView.Adapter<AndroidDataAdapter.
 
         df =  new SimpleDateFormat("HH:mm");
 
-        holder.bookmark.setImageResource(R.drawable.star); //remove
-        holder.bookmark.setTag(R.drawable.star); //remove
-
-        holder.userImage.setImageResource(R.drawable.star);
-        holder.eventText.setText(arrayList.get(i).name);
-        holder.timeText.setText("Starts: "+df.format(calendar.getTime()));
-        holder.venueText.setText("Venue: "+arrayList.get(i).venue);
-        holder.userText.setText(arrayList.get(i).poster);
-        //Log.d("getadapternames","1");
-        holder.bookmark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(holder.bookmark.getTag().equals(R.drawable.star)){
-                    holder.bookmark.setImageResource(R.drawable.starmarked);
-                    holder.bookmark.setTag(R.drawable.starmarked);
-                }
-                else{
-                    holder.bookmark.setImageResource(R.drawable.star);
-                    holder.bookmark.setTag(R.drawable.star);
-                }
-            }
-        });
+//        holder.bookmark.setImageResource(R.drawable.star); //remove
+//        holder.bookmark.setTag(R.drawable.star); //remove
+//
+//        holder.userImage.setImageResource(R.drawable.star);
+//        holder.eventText.setText(arrayList.get(i).name);
+//        holder.timeText.setText("Starts: "+df.format(calendar.getTime()));
+//        holder.venueText.setText("Venue: "+arrayList.get(i).venue);
+//        holder.userText.setText(arrayList.get(i).poster);
+//        //Log.d("getadapternames","1");
+//        holder.bookmark.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(holder.bookmark.getTag().equals(R.drawable.star)){
+//                    holder.bookmark.setImageResource(R.drawable.starmarked);
+//                    holder.bookmark.setTag(R.drawable.starmarked);
+//                }
+//                else{
+//                    holder.bookmark.setImageResource(R.drawable.star);
+//                    holder.bookmark.setTag(R.drawable.star);
+//                }
+//            }
+//        });
         holder.eventText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,7 +133,7 @@ public class AndroidDataAdapter extends RecyclerView.Adapter<AndroidDataAdapter.
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup vGroup, int i) {
 
-        View view = LayoutInflater.from(vGroup.getContext()).inflate(R.layout.event_panel_layout, vGroup, false);
+        View view = LayoutInflater.from(vGroup.getContext()).inflate(R.layout.total_events, vGroup, false);
         return new ViewHolder(view);
     }
 
@@ -141,20 +144,19 @@ public class AndroidDataAdapter extends RecyclerView.Adapter<AndroidDataAdapter.
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView eventText,timeText,venueText,userText;
-        private ImageView imageView,userImage,bookmark;
+        private TextView eventText,timeText,userText;
+        private ImageView imageView;
 
         public ViewHolder(View v) {
             super(v);
 
-            eventText = (TextView) v.findViewById(R.id.eventtext);
-            timeText = (TextView) v.findViewById(R.id.timetext);
-            venueText = (TextView) v.findViewById(R.id.venuetext);
-            userText = (TextView) v.findViewById(R.id.usertext);
+            eventText = (TextView) v.findViewById(R.id.eventname);
+            timeText = (TextView) v.findViewById(R.id.eventdate);
 
-            imageView = (ImageView) v.findViewById(R.id.imagePanel);
-            userImage =(ImageView)v.findViewById(R.id.userimage);
-            bookmark =(ImageView)v.findViewById(R.id.bookmark);
+            userText = (TextView) v.findViewById(R.id.eventdescription);
+
+            imageView = (ImageView) v.findViewById(R.id.eventpic);
+
         }
     }
 
