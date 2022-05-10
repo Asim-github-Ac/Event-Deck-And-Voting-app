@@ -53,10 +53,8 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.Viewholder> 
         holder.pname.setText(products.getName());
         holder.pdesc.setText(products.getDescription());
        // holder.pbid.setText("Rs "+products.getBid());
-        Picasso
-                .get()
+        Picasso.get()
                 .load(products.getImage())
-                .centerCrop()
                 .into(holder.imageView);
 //        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Products").child(products.getName());
 //        reference.addListenerForSingleValueEvent(new ValueEventListener() {

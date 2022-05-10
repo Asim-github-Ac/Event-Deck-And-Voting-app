@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import in.macrocodes.onlineauctionapp.AddEvents;
 import in.macrocodes.onlineauctionapp.MainActivity;
 import in.macrocodes.onlineauctionapp.R;
 import in.macrocodes.onlineauctionapp.SettingsActivity;
@@ -16,7 +17,7 @@ import in.macrocodes.onlineauctionapp.addProductforBid;
 
 public class Admin_Panel extends AppCompatActivity {
 
-    Button btn,logout,addcanidate;
+    Button btn,logout,addcanidate,addevents;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +25,7 @@ public class Admin_Panel extends AppCompatActivity {
         btn=findViewById(R.id.stdapprove);
         logout=findViewById(R.id.logout);
         addcanidate=findViewById(R.id.Addcadidate);
+        addevents=findViewById(R.id.addevents);
 
 
         logout.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +41,12 @@ public class Admin_Panel extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), addProductforBid.class));
+            }
+        });
+        addevents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), AddEvents.class));
             }
         });
         btn.setOnClickListener(new View.OnClickListener() {
