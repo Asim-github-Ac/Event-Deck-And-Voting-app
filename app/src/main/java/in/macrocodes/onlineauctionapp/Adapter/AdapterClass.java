@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,10 +53,9 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.Viewholder> 
         holder.pname.setText(products.getName());
         holder.pdesc.setText(products.getDescription());
        // holder.pbid.setText("Rs "+products.getBid());
-        Glide
-                .with(mContext)
+        Picasso
+                .get()
                 .load(products.getImage())
-                .diskCacheStrategy(DiskCacheStrategy.DATA)
                 .centerCrop()
                 .into(holder.imageView);
 //        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Products").child(products.getName());

@@ -51,7 +51,6 @@ public class RegisterActivity extends AppCompatActivity {
         Intent intent=getIntent();
         usertype=intent.getStringExtra("user");
         mRegProgress = new ProgressDialog(this);
-
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
         mAuth = FirebaseAuth.getInstance();
         mRegProgress = new ProgressDialog(this);
@@ -64,14 +63,11 @@ public class RegisterActivity extends AppCompatActivity {
         mCreateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 final String display_name=mDisplayName.getText().toString();
                 final String  email=mEmail.getText().toString();
                 final String password=mPassword.getText().toString();
                 final String city=mCity.getText().toString();
                 if(!TextUtils.isEmpty(display_name) || !TextUtils.isEmpty(email) || !TextUtils.isEmpty(password)) {
-
                     mRegProgress.setTitle("Registering User");
                     mRegProgress.setMessage("Please wait while we create your account !");
                     mRegProgress.setCanceledOnTouchOutside(false);
@@ -87,36 +83,23 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
-
         // Android Fields
-
     }
     private void register_user(final String display_name, final String email, String password, final String city) {
-
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-
                 if(task.isSuccessful()){
-
                     // dialog_verifying.dismiss();
-
                     FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
                     assert current_user != null;
                     String uid = current_user.getUid();
-
-
                     UserData userData = new UserData(display_name,email,city,"default",uid,addrollno.getText().toString());
-
                     FirebaseFirestore firebaseFirestore=FirebaseFirestore.getInstance();
-
                     mDatabase.child(uid).setValue(userData).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-
                             if(task.isSuccessful()){
-
-
                                 if (usertype.equals("Student")) {
                                    firebaseFirestore.collection("Users").add(userData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                        @Override
@@ -145,22 +128,11 @@ public class RegisterActivity extends AppCompatActivity {
                     });
 
                 } else {
-
-                    // dialog_verifying.hide();
                     String task_result = task.getException().getMessage().toString();
                     mRegProgress.hide();
                     Toast.makeText(RegisterActivity.this, task_result, Toast.LENGTH_LONG).show();
-
                 }
-
             }
         });
-
-    }
-    @Override
-    public void onBackPressed() {
-        // TODO Auto-generated method stub
-        super.onBackPressed();
-
     }
 }

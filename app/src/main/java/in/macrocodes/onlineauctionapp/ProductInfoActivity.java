@@ -31,6 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -120,50 +121,22 @@ public class ProductInfoActivity extends AppCompatActivity  implements View.OnCl
             }
         });
     }
-    private void bidStart(){
-        bidBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!uid.equalsIgnoreCase(FirebaseAuth.getInstance().getCurrentUser().getUid())){
-                    String b = bidtext.getText().toString().trim();
-                    if (!b.isEmpty()){
-                        if (Integer.parseInt(b)>Integer.parseInt(bid)){
-                            bidtext.setText("");
-                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Products")
-                                    .child(name).child("bidding");
-                            String puch_id = reference.push().getKey();
-                            HashMap<Object,String>hashMap = new HashMap<>();
-                            hashMap.put("bid",b);
-                            hashMap.put("uid", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
-                            assert puch_id != null;
-                            reference.child(puch_id).setValue(hashMap);
-                        }else{
-                            Toast.makeText(ProductInfoActivity.this, "Bidding ammount must be greator than the product value", Toast.LENGTH_SHORT).show();
-                        }
-                    }else{
-                        Toast.makeText(ProductInfoActivity.this, "Please enter a bidding amount", Toast.LENGTH_SHORT).show();
-                    }
-                }else{
-                    Toast.makeText(ProductInfoActivity.this, "You can't bid in your own product", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
     private void getSellerInfo(){
+        System.out.println("user id is _______________"+uid);
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String name = snapshot.child("name").getValue().toString();
-                String profile = snapshot.child("image").getValue().toString();
-                String city = snapshot.child("city").getValue().toString();
-                sellername.setText(name);
-                sellercity.setText("From "+city);
-                Glide.with(Objects.requireNonNull(ProductInfoActivity.this))
-                        .load(profile)
-                        .diskCacheStrategy(DiskCacheStrategy.DATA)
-                        .placeholder(R.drawable.default_avatar)
-                        .into(sellerImage);
+//                String name = snapshot.child("name").getValue().toString();
+//                String profile = snapshot.child("image").getValue().toString();
+//              //  String city = snapshot.child("city").getValue().toString();
+//                sellername.setText(name);
+//              //  sellercity.setText("From "+city);
+//                Glide.with(Objects.requireNonNull(ProductInfoActivity.this))
+//                        .load(profile)
+//                        .diskCacheStrategy(DiskCacheStrategy.DATA)
+//                        .placeholder(R.drawable.default_avatar)
+//                        .into(sellerImage);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -172,14 +145,14 @@ public class ProductInfoActivity extends AppCompatActivity  implements View.OnCl
     }
     private void getData(){
         imageList.clear();
+        System.out.println("data is ________________"+name);
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Selected_Canidate").child(name);
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String url=snapshot.child("image").getValue(String.class);
-                Glide.with(ProductInfoActivity.this)
+                Picasso.get()
                         .load(url)
-                        .diskCacheStrategy(DiskCacheStrategy.DATA)
                         .placeholder(R.drawable.default_send_image)
                         .into(imageView);
             }
@@ -196,10 +169,10 @@ public class ProductInfoActivity extends AppCompatActivity  implements View.OnCl
         uid = getIntent().getStringExtra("uid");
         status = getIntent().getStringExtra("status");
         mine = getIntent().getStringExtra("mine");
+        sellername.setText(name);
         if (mine!=null){
            // bidNow.setText("View Bidding of Your Product");
         }
-
         pname.setText(name);
         pdesc.setText(desc);
         rate.setText("Bidding Starts at Rs "+bid);
