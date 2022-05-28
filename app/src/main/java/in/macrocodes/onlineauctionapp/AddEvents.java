@@ -326,7 +326,7 @@ public class AddEvents extends AppCompatActivity {
         String heldBy = heldByView.getText().toString();
         long startTime = calendarFrom.getTimeInMillis();
         long endTime = calendarTo.getTimeInMillis();
-        AddEventModel addEventModel=new AddEventModel(getcurrentDateAndTime(),startTime,endTime,name,venue,category,imagelink,time,poster,desc,heldBy,uid);
+        AddEventModel addEventModel=new AddEventModel(getcurrentDateAndTime(),getcurrentDateAndTime().toString(),endTime,name,venue,category,imagelink,time,poster,desc,heldBy,uid);
         FirebaseFirestore firebaseFirestore=FirebaseFirestore.getInstance();
         firebaseFirestore.collection("TotalEvents").add(addEventModel).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override

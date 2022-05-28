@@ -2,7 +2,7 @@ package in.macrocodes.onlineauctionapp.Models;
 
 public class AddEventModel {
     public String date; //-
-    public long startTime;//-
+    public String startTime;//-
     public long endTime;//-
     public String name; //-
     public String venue; //-
@@ -16,7 +16,7 @@ public class AddEventModel {
 
 
 
-    public AddEventModel(String date, long startTime, long endTime, String name, String venue, String category, String image, String time, String poster, String description, String heldBy, String uid) {
+    public AddEventModel(String date, String startTime, long endTime, String name, String venue, String category, String image, String time, String poster, String description, String heldBy, String uid) {
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -42,11 +42,11 @@ public class AddEventModel {
         this.date = date;
     }
 
-    public long getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(long startTime) {
+    public void setStartTime(String  startTime) {
         this.startTime = startTime;
     }
 

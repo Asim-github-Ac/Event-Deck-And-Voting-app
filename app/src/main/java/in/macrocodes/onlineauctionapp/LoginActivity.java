@@ -68,8 +68,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String email=mLoginEmail.getText().toString();
-                String password=mLoginPassword.getText().toString();
+                String email=mLoginEmail.getText().toString().trim();
+                String password=mLoginPassword.getText().toString().trim();
 
 
 //                LayoutInflater inflater = getLayoutInflater();
@@ -100,7 +100,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
-
             }
         });
 

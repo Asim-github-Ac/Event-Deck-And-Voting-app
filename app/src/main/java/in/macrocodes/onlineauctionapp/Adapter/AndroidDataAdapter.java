@@ -66,10 +66,10 @@ public class AndroidDataAdapter extends RecyclerView.Adapter<AndroidDataAdapter.
         });
 
         Picasso.get().load(arrayList.get(i).image).into(holder.imageView);
-        holder.eventText.setText(arrayList.get(i).name);
-        holder.timeText.setText("Starts: "+arrayList.get(i).getStartTime());
+        holder.eventText.setText("Event Name : "+arrayList.get(i).name);
+        holder.timeText.setText("Start Date : "+arrayList.get(i).getStartTime());
 
-        holder.userText.setText(arrayList.get(i).getDescription());
+        holder.userText.setText("Description : "+arrayList.get(i).getDescription());
 //        if(currentuser.bookmarklist.contains(arrayList.get(i))){
 //            holder.bookmark.setImageResource(R.drawable.starmarked);
 //            holder.bookmark.setTag(R.drawable.starmarked);
@@ -81,8 +81,8 @@ public class AndroidDataAdapter extends RecyclerView.Adapter<AndroidDataAdapter.
 
 //        }
 
-        calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(arrayList.get(i).startTime);
+//        calendar = Calendar.getInstance();
+//        calendar.setTimeInMillis(arrayList.get(i).startTime);
 
         df =  new SimpleDateFormat("HH:mm");
 
