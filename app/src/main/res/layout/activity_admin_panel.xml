@@ -67,6 +67,24 @@
         android:textSize="20dp"
         tools:ignore="HardcodedText,RtlSymmetry,SpUsage,UnusedAttribute" />
     <Button
+        android:id="@+id/addresult"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_margin="20dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/createnew"
+        android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+        android:gravity="start|center_vertical"
+        android:paddingStart="15dp"
+        android:stateListAnimator="@null"
+        android:text="Add Result"
+        android:textAlignment="gravity"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        tools:ignore="HardcodedText,RtlSymmetry,SpUsage,UnusedAttribute" />
+    <Button
         android:id="@+id/logout"
         android:layout_width="match_parent"
         android:layout_height="70dp"

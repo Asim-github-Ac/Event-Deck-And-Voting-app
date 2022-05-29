@@ -73,13 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                     mRegProgress.setCanceledOnTouchOutside(false);
                     mRegProgress.show();
                     register_user(display_name, email, password, city);
-                  /* LayoutInflater inflater = getLayoutInflater();
-                    View alertLayout= inflater.inflate(R.layout.processing_dialog,null);
-                    AlertDialog.Builder show = new AlertDialog.Builder(RegisterActivity.this);
-                    show.setView(alertLayout);
-                    show.setCancelable(false);
-                    dialog_verifying = show.create();
-                    dialog_verifying.show();*/
+
                 }
             }
         });

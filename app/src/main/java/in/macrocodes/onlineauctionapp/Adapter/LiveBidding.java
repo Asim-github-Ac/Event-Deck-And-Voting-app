@@ -43,21 +43,7 @@ public class LiveBidding extends RecyclerView.Adapter<LiveBidding.Viewholder> {
 
         VoteModel biddingModal = biddingList.get(position);
         holder.bidTxt.setText(biddingModal.getCastername());
-//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(biddingModal.getUid());
-//        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                String name = snapshot.child("name").getValue().toString();
-//                holder.bidTxt.setText(name+" bidded for Rs "+biddingModal.getBid());
-//            }
 //
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-
-
     }
 
     @Override

@@ -70,62 +70,14 @@ public class AndroidDataAdapter extends RecyclerView.Adapter<AndroidDataAdapter.
         holder.timeText.setText("Start Date : "+arrayList.get(i).getStartTime());
 
         holder.userText.setText("Description : "+arrayList.get(i).getDescription());
-//        if(currentuser.bookmarklist.contains(arrayList.get(i))){
-//            holder.bookmark.setImageResource(R.drawable.starmarked);
-//            holder.bookmark.setTag(R.drawable.starmarked);
-
-//        }
-//        else{
-//            holder.bookmark.setImageResource(R.drawable.star);
-//            holder.bookmark.setTag(R.drawable.star);
-
-//        }
-
-//        calendar = Calendar.getInstance();
-//        calendar.setTimeInMillis(arrayList.get(i).startTime);
-
+//
         df =  new SimpleDateFormat("HH:mm");
 
-//        holder.bookmark.setImageResource(R.drawable.star); //remove
-//        holder.bookmark.setTag(R.drawable.star); //remove
 //
-//        holder.userImage.setImageResource(R.drawable.star);
-//        holder.eventText.setText(arrayList.get(i).name);
-//        holder.timeText.setText("Starts: "+df.format(calendar.getTime()));
-//        holder.venueText.setText("Venue: "+arrayList.get(i).venue);
-//        holder.userText.setText(arrayList.get(i).poster);
-//        //Log.d("getadapternames","1");
-//        holder.bookmark.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(holder.bookmark.getTag().equals(R.drawable.star)){
-//                    holder.bookmark.setImageResource(R.drawable.starmarked);
-//                    holder.bookmark.setTag(R.drawable.starmarked);
-//                }
-//                else{
-//                    holder.bookmark.setImageResource(R.drawable.star);
-//                    holder.bookmark.setTag(R.drawable.star);
-//                }
-//            }
-//        });
         holder.eventText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Toast.makeText(view.getContext(), "Event", Toast.LENGTH_LONG).show();
-//                Intent intent = new Intent(mcontext,EventPageActivity.class);
-////                intent.putExtra("Event",position);
-//                intent.putExtra("image",arrayList.get(position).image);
-//                intent.putExtra("name",arrayList.get(position).name);
-//                intent.putExtra("date",arrayList.get(position).date);
-//                intent.putExtra("heldBy",arrayList.get(position).heldBy);
-//                intent.putExtra("startTime",arrayList.get(position).startTime);
-//                intent.putExtra("endTime",arrayList.get(position).endTime);
-//                intent.putExtra("category",arrayList.get(position).category);
-//                intent.putExtra("time",arrayList.get(position).time);
-//                intent.putExtra("venue",arrayList.get(position).venue);
-//                intent.putExtra("description",arrayList.get(position).description);
-//                intent.putExtra("poster",arrayList.get(position).poster);
-//                mcontext.startActivity(intent);
+//
             }
         });
     }

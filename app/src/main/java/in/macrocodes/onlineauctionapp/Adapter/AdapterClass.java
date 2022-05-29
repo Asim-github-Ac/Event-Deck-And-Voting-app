@@ -56,29 +56,6 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.Viewholder> 
         Picasso.get()
                 .load(products.getImage())
                 .into(holder.imageView);
-//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Products").child(products.getName());
-//        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//                if (!snapshot.child("image0").equals("default")){
-//
-//                    String url = Objects.requireNonNull(snapshot.child("image0").getValue()).toString();
-//                    Glide
-//                            .with(mContext)
-//                            .load(url)
-//                            .diskCacheStrategy(DiskCacheStrategy.DATA)
-//                            .centerCrop()
-//                            .into(holder.imageView);
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
