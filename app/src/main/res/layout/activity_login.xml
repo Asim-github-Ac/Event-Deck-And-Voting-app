@@ -153,7 +153,19 @@
                 android:textColor="#4F26AF"
                 android:textSize="13dp" />
 
+            <Button
+                android:id="@+id/forgetpass"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
 
+                android:background="@drawable/rect_btn"
+                android:text="Forget Password"
+                android:textColor="@android:color/white"
+                android:textSize="13dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </RelativeLayout>

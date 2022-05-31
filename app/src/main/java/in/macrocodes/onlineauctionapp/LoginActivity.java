@@ -7,16 +7,20 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -36,8 +40,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText mLoginEmail;
     private EditText mLoginPassword;
-
-    private Button mLogin_btn,mSign_up;
+    ProgressDialog loadingBar;
+    private Button mLogin_btn,mSign_up,forgetpassword;
     private Context mContext;
     String usertype;
     private ProgressDialog mLoginProgress;
@@ -57,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         mLogin_btn=(Button)findViewById(R.id.lg_login);
         mSign_up=(Button)findViewById(R.id.lg_signup);
 
+        forgetpassword=findViewById(R.id.forgetpass);
         mLoginEmail=(EditText)findViewById(R.id.lg_email);
         mRegProgress = new ProgressDialog(LoginActivity.this);
         mLoginPassword=(EditText)findViewById(R.id.lg_pass);
@@ -64,6 +69,12 @@ public class LoginActivity extends AppCompatActivity {
         mContext = this;
 
 
+        forgetpassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showRecoverPasswordDialog();
+            }
+        });
         mLogin_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -171,5 +182,65 @@ public class LoginActivity extends AppCompatActivity {
     {
         super.onResume();
         FirebaseDatabase.getInstance().goOnline();
+    }
+    private void showRecoverPasswordDialog() {
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("Recover Password");
+        LinearLayout linearLayout=new LinearLayout(this);
+        final EditText emailet= new EditText(this);
+
+        // write the email using which you registered
+        emailet.setText("Email");
+        emailet.setMinEms(16);
+        emailet.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        linearLayout.addView(emailet);
+        linearLayout.setPadding(10,10,10,10);
+        builder.setView(linearLayout);
+
+        // Click on Recover and a email will be sent to your registered email id
+        builder.setPositiveButton("Recover", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String email=emailet.getText().toString().trim();
+                beginRecovery(email);
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
+    }
+    private void beginRecovery(String email) {
+        loadingBar=new ProgressDialog(this);
+        loadingBar.setMessage("Sending Email....");
+        loadingBar.setCanceledOnTouchOutside(false);
+        loadingBar.show();
+
+        // calling sendPasswordResetEmail
+        // open your email and write the new
+        // password and then you can login
+        mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                loadingBar.dismiss();
+                if(task.isSuccessful())
+                {
+                    Toast.makeText(LoginActivity.this,"Done sent",Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(LoginActivity.this,"Error Occured",Toast.LENGTH_LONG).show();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                loadingBar.dismiss();
+                Toast.makeText(LoginActivity.this,"Error Failed"+e.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

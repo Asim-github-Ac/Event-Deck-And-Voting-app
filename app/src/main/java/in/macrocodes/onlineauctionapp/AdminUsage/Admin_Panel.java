@@ -17,7 +17,7 @@ import in.macrocodes.onlineauctionapp.addProductforBid;
 
 public class Admin_Panel extends AppCompatActivity {
 
-    Button btn,logout,addcanidate,addevents;
+    Button btn,logout,addcanidate,addevents,addresult;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +26,17 @@ public class Admin_Panel extends AppCompatActivity {
         logout=findViewById(R.id.logout);
         addcanidate=findViewById(R.id.Addcadidate);
         addevents=findViewById(R.id.addevents);
+        addresult=findViewById(R.id.addresult);
 
 
+        addresult.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getApplicationContext(),AddResult_Activity.class));
+
+            }
+        });
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

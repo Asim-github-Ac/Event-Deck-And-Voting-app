@@ -13,10 +13,10 @@ public class AddEventModel {
     public String description; //-
     public String heldBy;//-
     public String uid;
+    public String department;
+    public String semester;
 
-
-
-    public AddEventModel(String date, String startTime, long endTime, String name, String venue, String category, String image, String time, String poster, String description, String heldBy, String uid) {
+    public AddEventModel(String date, String startTime, long endTime, String name, String venue, String category, String image, String time, String poster, String description, String heldBy, String uid, String department, String semester) {
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -29,9 +29,8 @@ public class AddEventModel {
         this.description = description;
         this.heldBy = heldBy;
         this.uid = uid;
-    }
-
-    public AddEventModel() {
+        this.department = department;
+        this.semester = semester;
     }
 
     public String getDate() {
@@ -46,7 +45,7 @@ public class AddEventModel {
         return startTime;
     }
 
-    public void setStartTime(String  startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
@@ -128,5 +127,21 @@ public class AddEventModel {
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester;
     }
 }

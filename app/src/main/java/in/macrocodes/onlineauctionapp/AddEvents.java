@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -79,6 +80,7 @@ public class AddEvents extends AppCompatActivity {
     private TextView venueView,heldByView;
     private TextView evName;
     private TextView evDesc;
+    EditText department,semster;
     private CalendarView calendarView;
     private TimePicker timePickerFrom;
     private TimePicker timePickerTo;
@@ -115,6 +117,8 @@ public class AddEvents extends AppCompatActivity {
         evDesc = (TextView) findViewById(R.id.evDesc);
         heldByView =(TextView) findViewById(R.id.evHeldBy);
         venueView = (TextView) findViewById(R.id.evVenue);
+        department=findViewById(R.id.department);
+        semster=findViewById(R.id.semster);
         btnupload=findViewById(R.id.createEvent);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
@@ -326,7 +330,7 @@ public class AddEvents extends AppCompatActivity {
         String heldBy = heldByView.getText().toString();
         long startTime = calendarFrom.getTimeInMillis();
         long endTime = calendarTo.getTimeInMillis();
-        AddEventModel addEventModel=new AddEventModel(getcurrentDateAndTime(),getcurrentDateAndTime().toString(),endTime,name,venue,category,imagelink,time,poster,desc,heldBy,uid);
+        AddEventModel addEventModel=new AddEventModel(getcurrentDateAndTime(),getcurrentDateAndTime().toString(),endTime,name,venue,category,imagelink,time,poster,desc,heldBy,uid,department.getText().toString(),semster.getText().toString());
         FirebaseFirestore firebaseFirestore=FirebaseFirestore.getInstance();
         firebaseFirestore.collection("TotalEvents").add(addEventModel).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override

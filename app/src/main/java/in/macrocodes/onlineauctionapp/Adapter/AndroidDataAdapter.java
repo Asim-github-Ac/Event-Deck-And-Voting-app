@@ -70,6 +70,8 @@ public class AndroidDataAdapter extends RecyclerView.Adapter<AndroidDataAdapter.
         holder.timeText.setText("Start Date : "+arrayList.get(i).getStartTime());
 
         holder.userText.setText("Description : "+arrayList.get(i).getDescription());
+        holder.department.setText("Departments : "+arrayList.get(i).getDepartment());
+        holder.semster.setText("Semster : "+arrayList.get(i).getSemester());
 //
         df =  new SimpleDateFormat("HH:mm");
 
@@ -96,7 +98,8 @@ public class AndroidDataAdapter extends RecyclerView.Adapter<AndroidDataAdapter.
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView eventText,timeText,userText;
+        private TextView eventText,timeText,userText,department,semster;
+
         private ImageView imageView;
 
         public ViewHolder(View v) {
@@ -108,6 +111,10 @@ public class AndroidDataAdapter extends RecyclerView.Adapter<AndroidDataAdapter.
             userText = (TextView) v.findViewById(R.id.eventdescription);
 
             imageView = (ImageView) v.findViewById(R.id.eventpic);
+            department=v.findViewById(R.id.departmentitem);
+            semster=v.findViewById(R.id.semsteritem);
+
+
 
         }
     }

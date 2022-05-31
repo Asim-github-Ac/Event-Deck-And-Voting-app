@@ -41,15 +41,29 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:text="Event Date"
-              android:layout_margin="20dp"
+              android:layout_margin="10dp"
               android:id="@+id/eventdate"
               />
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:text="Description"
-              android:layout_margin="20dp"
+              android:layout_margin="10dp"
               android:id="@+id/eventdescription"
+              />
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Department"
+              android:layout_margin="10dp"
+              android:id="@+id/departmentitem"
+              />
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="semster"
+              android:layout_margin="10dp"
+              android:id="@+id/semsteritem"
               />
       </LinearLayout>
    </androidx.cardview.widget.CardView>
