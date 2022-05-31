@@ -287,6 +287,10 @@ public class HomeActivity extends AppCompatActivity {
                 Intent intent = new Intent(HomeActivity.this,SettingsActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.winnername:
+                Intent i2 = new Intent(HomeActivity.this,Anouncement.class);
+                startActivity(i2);
+                return true;
             case R.id.mycamp:
                 Intent intent2 = new Intent(HomeActivity.this,MyCampaigns.class);
                 startActivity(intent2);

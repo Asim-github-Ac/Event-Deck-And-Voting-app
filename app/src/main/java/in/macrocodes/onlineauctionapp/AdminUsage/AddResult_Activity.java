@@ -59,7 +59,6 @@ public class AddResult_Activity extends AppCompatActivity {
         firestore.collection("Candidate Total Votes").document("finalresult").collection("name").add(resultModel).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
-
                 if (task.isSuccessful()){
                     progressDialog.dismiss();
                     startActivity(new Intent(getApplicationContext(),Admin_Panel.class));
@@ -71,7 +70,6 @@ public class AddResult_Activity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-
                 progressDialog.dismiss();
                 Toast.makeText(AddResult_Activity.this, "error"+e.getMessage(), Toast.LENGTH_SHORT).show();
             }
