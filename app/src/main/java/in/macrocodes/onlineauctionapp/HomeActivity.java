@@ -75,14 +75,6 @@ public class HomeActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.productList);
 
 
-
-        Intent intent=getIntent();
-        vali=intent.getStringExtra("key");
-        if (vali.equals("check")){
-
-        }else if (vali.equals("Admin")){
-          //  prefManager.setToken_Email("Admin");
-        }
         //prefManager.setToken_Email("Admin");
         refresh = (ImageView) findViewById(R.id.refresh);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.refreshLayout);
