@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Events Deck</string>
+    <string name="nav_open">open</string>
+    <string name="nav_close">close</string>
     <string-array name="categories">
         <item>Business</item>
         <item>Tech</item>

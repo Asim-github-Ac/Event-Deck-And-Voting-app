@@ -58,6 +58,7 @@ public class HomeActivity extends AppCompatActivity {
     AdapterClass mAdapter;
     BottomAppBar bottomAppBar;
     ImageView refresh;
+    String vali;
     SwipeRefreshLayout mSwipeRefreshLayout;
     private int itemPos = 0;
     private static final int TOTAL_ITEMS_TO_LOAD = 2000;
@@ -75,6 +76,14 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
+        Intent intent=getIntent();
+        vali=intent.getStringExtra("key");
+        if (vali.equals("check")){
+
+        }else if (vali.equals("Admin")){
+          //  prefManager.setToken_Email("Admin");
+        }
+        //prefManager.setToken_Email("Admin");
         refresh = (ImageView) findViewById(R.id.refresh);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.refreshLayout);
         bottomAppBar =  findViewById(R.id.bottomAppBar);

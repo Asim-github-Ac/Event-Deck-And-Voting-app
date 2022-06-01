@@ -33,6 +33,9 @@ public class AddEventModel {
         this.semester = semester;
     }
 
+    public AddEventModel() {
+    }
+
     public String getDate() {
         return date;
     }

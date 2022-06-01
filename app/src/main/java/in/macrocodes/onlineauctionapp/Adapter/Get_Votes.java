@@ -9,24 +9,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import in.macrocodes.onlineauctionapp.Models.BiddingModal;
 import in.macrocodes.onlineauctionapp.Models.VoteModel;
 import in.macrocodes.onlineauctionapp.ProductInfoActivity;
 import in.macrocodes.onlineauctionapp.R;
 
-public class LiveBidding extends RecyclerView.Adapter<LiveBidding.Viewholder> {
+public class Get_Votes extends RecyclerView.Adapter<Get_Votes.Viewholder> {
     List<VoteModel> biddingList = new ArrayList<>();
     Context mContext;
-    public LiveBidding(ProductInfoActivity productInfoActivity, List<VoteModel> biddingList) {
+    public Get_Votes(ProductInfoActivity productInfoActivity, List<VoteModel> biddingList) {
         this.mContext = productInfoActivity;
         this.biddingList=biddingList;
     }
@@ -34,7 +27,7 @@ public class LiveBidding extends RecyclerView.Adapter<LiveBidding.Viewholder> {
     @NonNull
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.live_bid,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.votes_layout,parent,false);
         return new Viewholder(view);
     }
 

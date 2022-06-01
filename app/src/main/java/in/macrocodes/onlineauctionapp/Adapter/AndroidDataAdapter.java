@@ -11,12 +11,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
@@ -24,6 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import in.macrocodes.onlineauctionapp.AddpartisPants;
 import in.macrocodes.onlineauctionapp.Models.AddEventModel;
 import in.macrocodes.onlineauctionapp.R;
 
@@ -76,10 +83,18 @@ public class AndroidDataAdapter extends RecyclerView.Adapter<AndroidDataAdapter.
         df =  new SimpleDateFormat("HH:mm");
 
 //
+        holder.btnadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         holder.eventText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //
+                Intent intent=new Intent(mcontext, AddpartisPants.class);
+                mcontext.startActivity(intent);
             }
         });
     }
@@ -100,6 +115,7 @@ public class AndroidDataAdapter extends RecyclerView.Adapter<AndroidDataAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView eventText,timeText,userText,department,semster;
 
+        Button btnadd;
         private ImageView imageView;
 
         public ViewHolder(View v) {
@@ -108,6 +124,7 @@ public class AndroidDataAdapter extends RecyclerView.Adapter<AndroidDataAdapter.
             eventText = (TextView) v.findViewById(R.id.eventname);
             timeText = (TextView) v.findViewById(R.id.eventdate);
 
+            btnadd=v.findViewById(R.id.addparti);
             userText = (TextView) v.findViewById(R.id.eventdescription);
 
             imageView = (ImageView) v.findViewById(R.id.eventpic);
@@ -116,7 +133,9 @@ public class AndroidDataAdapter extends RecyclerView.Adapter<AndroidDataAdapter.
 
 
 
+
         }
     }
+
 
 }

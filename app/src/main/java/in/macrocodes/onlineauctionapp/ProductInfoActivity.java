@@ -15,14 +15,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,12 +29,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import in.macrocodes.onlineauctionapp.Adapter.LiveBidding;
+import in.macrocodes.onlineauctionapp.Adapter.Get_Votes;
 import in.macrocodes.onlineauctionapp.Adapter.pInfo_AllImageView;
 import in.macrocodes.onlineauctionapp.Models.BiddingModal;
 import in.macrocodes.onlineauctionapp.Models.VoteModel;
@@ -58,7 +52,7 @@ public class ProductInfoActivity extends AppCompatActivity  implements View.OnCl
     List<BiddingModal> biddingList = new ArrayList<>();
     List<VoteModel> voteModels=new ArrayList<>();
     EditText bidtext;
-    LiveBidding mAdapter2;
+    Get_Votes mAdapter2;
     Button bidBtn;
     TextView title;
     LinearLayout biddingLayout;
@@ -218,7 +212,7 @@ public class ProductInfoActivity extends AppCompatActivity  implements View.OnCl
                     progressDialog.cancel();
                 }else {
                     List<VoteModel> voteModels=queryDocumentSnapshots.toObjects(VoteModel.class);
-                    mAdapter2 = new LiveBidding(ProductInfoActivity.this,voteModels);
+                    mAdapter2 = new Get_Votes(ProductInfoActivity.this,voteModels);
                      bidView.setAdapter(mAdapter2);
                      progressDialog.cancel();
                      totalvotes.setText("Total Votes:"+voteModels.size());
