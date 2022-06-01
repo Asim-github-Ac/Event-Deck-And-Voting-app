@@ -35,7 +35,7 @@ import java.util.Objects;
 import de.hdodenhof.circleimageview.CircleImageView;
 import in.macrocodes.onlineauctionapp.Adapter.Get_Votes;
 import in.macrocodes.onlineauctionapp.Adapter.pInfo_AllImageView;
-import in.macrocodes.onlineauctionapp.Models.BiddingModal;
+import in.macrocodes.onlineauctionapp.Models.EventModels;
 import in.macrocodes.onlineauctionapp.Models.VoteModel;
 
 public class ProductInfoActivity extends AppCompatActivity  implements View.OnClickListener {
@@ -49,7 +49,7 @@ public class ProductInfoActivity extends AppCompatActivity  implements View.OnCl
     FirebaseFirestore firebaseFirestore;
     List<String> imageList = new ArrayList<>();
     RecyclerView bidView;
-    List<BiddingModal> biddingList = new ArrayList<>();
+    List<EventModels> biddingList = new ArrayList<>();
     List<VoteModel> voteModels=new ArrayList<>();
     EditText bidtext;
     Get_Votes mAdapter2;
@@ -98,8 +98,8 @@ public class ProductInfoActivity extends AppCompatActivity  implements View.OnCl
                         reference.child(Objects.requireNonNull(dataSnapshot.getKey())).addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                BiddingModal biddingModal = snapshot.getValue(BiddingModal.class);
-                                biddingList.add(biddingModal);
+                                EventModels eventModels = snapshot.getValue(EventModels.class);
+                                biddingList.add(eventModels);
                                 bidView.scrollToPosition(biddingList.size() - 1);
                                 mAdapter2.notifyDataSetChanged();
                             }

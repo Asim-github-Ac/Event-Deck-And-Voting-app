@@ -87,6 +87,9 @@ public class AndroidDataAdapter extends RecyclerView.Adapter<AndroidDataAdapter.
             @Override
             public void onClick(View v) {
 
+                Intent intent=new Intent(mcontext,AddpartisPants.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mcontext.startActivity(intent);
             }
         });
         holder.eventText.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +97,7 @@ public class AndroidDataAdapter extends RecyclerView.Adapter<AndroidDataAdapter.
             public void onClick(View view) {
 //
                 Intent intent=new Intent(mcontext, AddpartisPants.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mcontext.startActivity(intent);
             }
         });

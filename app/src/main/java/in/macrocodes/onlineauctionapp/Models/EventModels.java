@@ -1,12 +1,12 @@
 package in.macrocodes.onlineauctionapp.Models;
 
-public class BiddingModal {
+public class EventModels {
     String bid,uid;
 
-    public BiddingModal(){
+    public EventModels(){
 
     }
-    public BiddingModal(String bid, String uid) {
+    public EventModels(String bid, String uid) {
         this.bid = bid;
         this.uid = uid;
     }
